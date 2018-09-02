@@ -44,7 +44,7 @@ class DetailActivity : BaseActivity<DetailPresenter>(), IDetailView {
     }
 
     override fun showErrorVideo(err: String) {
-        Toast.makeText(this, getString(R.string.video_not_found), Toast.LENGTH_LONG).show()
+        Toast.makeText(this, err, Toast.LENGTH_LONG).show()
         mBindig.txtTrailer.visibility = View.GONE
     }
 }

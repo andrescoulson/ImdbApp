@@ -18,19 +18,16 @@ class MovieAdapter(private val context: Context) : RecyclerView.Adapter<MovieAda
     private var movies: List<Movie> = listOf()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-
         return ViewHolder(DataBindingUtil.inflate<ItemMovieBinding>(layoutInflater, R.layout.item_movie, parent, false))
     }
 
     override fun getItemCount(): Int {
-
         return movies.size
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val movie = movies[position]
         holder.bind(movie)
-
         holder.itemView?.setOnClickListener({
             context.startActivity(Intent(context, DetailActivity::class.java)
                     .putExtra("image", movie.poster_path)
@@ -39,7 +36,6 @@ class MovieAdapter(private val context: Context) : RecyclerView.Adapter<MovieAda
                     .putExtra("release_date", movie.release_date)
                     .putExtra("id", movie.id.toString()))
         })
-
     }
 
     fun updateMovies(list: List<Movie>) {
@@ -48,7 +44,6 @@ class MovieAdapter(private val context: Context) : RecyclerView.Adapter<MovieAda
     }
 
     class ViewHolder(private val binding: ItemMovieBinding) : RecyclerView.ViewHolder(binding?.root) {
-
         fun bind(movie: Movie) {
             binding.movie = movie
             binding.executePendingBindings()
